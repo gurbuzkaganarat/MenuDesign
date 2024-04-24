@@ -1,0 +1,143 @@
+:root {
+    --greenSeaweed: rgba(146, 199, 207, 1); /* Arka plan ve gölgelerde kullanılan birincil renk */
+    --blueQueen: rgba(69, 105, 144, 1); /* Dalga efektlerinde kullanılan ikincil renk */
+    --cream: rgba(229, 225, 218); /* Başlıklar ve düğmelerde kullanılan vurgu rengi */
+    /* Fontlar */
+    --fontAsap: 'Asap', sans-serif; /* Metinlerde kullanılan yazı tipi */
+}
+
+body {
+    background-color: var( --cream); /* Arka plan rengi */
+
+    background-image: url(foto.png);
+    background-repeat: no-repeat;
+    /* Arka plan resminin boyutunu tam ekran yapın */
+    background-size: cover;
+    /* Arka plan resminin konumunu merkezleyin */
+    /* Diğer stillendirmeler */
+    font-family: var(--fontAsap); /* Tüm metinlerin yazı tipi */
+    margin: 0; /* Sayfanın kenar boşluklarını kaldırın */
+    padding: 0; /* Sayfa içeriğinin kenar boşluklarını kaldırın */
+}
+
+.login {
+    overflow: hidden;
+    background-color: white; /* Giriş formunun arka plan rengi */
+    padding: 100px 30px 30px 30px; /* İç dolguları değiştirin */
+    border-radius: 10px; /* Köşe yuvarlama */
+    position: absolute; /* Pozisyon ayarı */
+    top: 50%; /* Yatay hizalamayı değiştirin */
+    left: 50%; /* Dikey hizalamayı değiştirin */
+    width: 400px; /* Form genişliği */
+    transform: translate(-50%, -50%); /* Yatay ve dikey merkezleme */
+    transition: transform 300ms, box-shadow 300ms; /* Geçiş efektleri */
+    box-shadow: 5px 10px 10px var(--greenSeaweed, 0.2); /* Gölge efekti */
+}
+
+
+    .login::before,
+    .login::after {
+        content: ''; /* Boş içerik */
+        position: absolute; /* Pozisyon ayarı */
+        width: 600px; /* Dalga efektinin genişliği */
+        height: 600px; /* Dalga efektinin yüksekliği */
+        border-top-left-radius: 40%; /* Dalga efektinin köşe yuvarlama */
+        border-top-right-radius: 45%; /* Dalga efektinin köşe yuvarlama */
+        border-bottom-left-radius: 35%; /* Dalga efektinin köşe yuvarlama */
+        border-bottom-right-radius: 40%; /* Dalga efektinin köşe yuvarlama */
+        z-index: -1; /* Görünürlük katmanı */
+    }
+
+    .login::before {
+        left: 40%; /* İlk dalga efektinin yatay konumu */
+        bottom: -130%; /* İlk dalga efektinin dikey konumu */
+        background-color: var(--greenSeaweed, 0.15); /* İlk dalga efektinin rengi */
+        animation: wawes 6s infinite linear; /* Dalga animasyonu */
+    }
+
+    .login::after {
+        left: 35%; /* İkinci dalga efektinin yatay konumu */
+        bottom: -125%; /* İkinci dalga efektinin dikey konumu */
+        background-color: var(--blueQueen, 0.2); /* İkinci dalga efektinin rengi */
+        animation: wawes 7s infinite; /* Dalga animasyonu */
+    }
+
+    .login > input {
+        font-family: var(--fontAsap); /* Giriş alanlarının yazı tipi */
+        display: block; /* Blok düzenleme */
+        border-radius: 5px; /* Kenar yuvarlama */
+        font-size: 16px; /* Yazı boyutu */
+        background: white; /* Arka plan rengi */
+        border: 1px solid transparent; /* Kenarlık rengi */
+        width: 100%; /* Genişlik */
+        border: 0; /* Kenarlık */
+        padding: 10px 10px; /* Dolgular */
+        margin: 15px -10px; /* Dış boşluklar */
+    }
+
+    .login > input {
+        font-family: var(--fontAsap); /* Giriş alanlarının yazı tipi */
+        display: block; /* Blok düzenleme */
+        border-radius: 5px; /* Kenar yuvarlama */
+        font-size: 16px; /* Yazı boyutu */
+        background: white; /* Arka plan rengi */
+        width: calc(100% - 20px); /* Genişlik (paddingler hariç) */
+        border: 1px solid transparent; /* Kenarlık rengi */
+        padding: 10px; /* Dolgular */
+        margin: 15px 0; /* Dış boşluklar */
+        transition: border-color 0.3s; /* Geçiş efekti */
+    }
+
+        .login > input:focus::placeholder {
+            color: transparent; /* Odaklandığında yer tutucu metnin saydam olması */
+        }
+
+        .login > input:focus {
+            border-color: var(--greenSeaweed); /* Kullanıcı adı ve şifre inputunun focus olduğunda border rengi */
+            outline: none; /* Odaklandığında varsayılan border'ı kaldırma */
+        }
+
+        .login > input:hover {
+            border-color: var(--greenSeaweed); /* Kullanıcı adı ve şifre inputunun üzerine gelindiğinde border rengi */
+        }
+
+    .login > button {
+        font-family: var(--fontAsap); /* Düğme yazı tipi */
+        cursor: pointer; /* İmleç türü */
+        color: #fff; /* Metin rengi */
+        font-size: 16px; /* Yazı boyutu */
+        text-transform: uppercase; /* Metin dönüşümü */
+        width: 80px; /* Genişlik */
+        border: 0; /* Kenarlık */
+        padding: 10px 0; /* Dolgu */
+        margin-top: 10px; /* Üst boşluk */
+        margin-left: -5px; /* Sol boşluk */
+        border-radius: 5px; /* Kenar yuvarlama */
+        background-color: var(--blueQueen); /* Düğme arka plan rengi */
+        transition: background-color 300ms; /* Geçiş efekti */
+    }
+
+        .login > button:hover {
+            background-color: var(--blueQueen); /* Düğme üzerine gelindiğinde arka plan rengi */
+        }
+
+@keyframes wawes {
+    from {
+        transform: rotate(0); /* Başlangıç dönüşü */
+    }
+
+    to {
+        transform: rotate(360deg); /* Son dönüş */
+    }
+}
+
+
+.logo {
+    position: absolute;
+    top: 0; /* Formun üst kısmına hizala */
+    left: 50%; /* Dikeyde merkezle */
+    transform: translateX(-50%); /* Yatayda merkezle */
+    margin-top: 20px; /* Logoyu yukarı taşımak için negatif margin kullanın */
+    width: 175px; /* Logonun genişliğini ayarlayın */
+    height: auto; /* Otomatik yükseklik */
+}
